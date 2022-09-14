@@ -2,7 +2,7 @@
 
 from setuptools import find_packages, setup
 
-version = "mpathdms.2.5.1"
+version = "2.5.1"
 
 with open("README.md") as f:
     readme = f.read()
