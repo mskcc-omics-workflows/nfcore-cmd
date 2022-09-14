@@ -1,3 +1,9 @@
+[tool.poetry]
+name = "nf-core"                                                                                                                
+version = "2.5.1"                                                                                                                      
+description = "Forked from nf-core/tools"
+authors = ["Yu Hu <huy1@mskcc.org>"]                                                                                               
+                                      
 [build-system]
 build-backend = "setuptools.build_meta"
 requires = [
