@@ -843,7 +843,7 @@ def test_module(ctx, tool, no_prompts, pytest_args, hpc):
     Given the name of a module, runs the Nextflow test command.
     """
     try:
-        meta_builder = nf_core.modules.ModulesTest(tool, no_prompts, pytest_args)
+        meta_builder = nf_core.modules.ModulesTest(tool, no_prompts, pytest_args, hpc)
         meta_builder.run()
     except (UserWarning, LookupError) as e:
         log.critical(e)
