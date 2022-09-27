@@ -2,7 +2,7 @@
 
 from setuptools import find_packages, setup
 
-version = "2.5.1-dms1.2"
+version = "2.5.1.2.dms"
 
 with open("README.md") as f:
     readme = f.read()
