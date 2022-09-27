@@ -53,10 +53,10 @@ class ModulesTest(ModuleCommand):
         module_name=None,
         no_prompts=False,
         pytest_args="",
+        hpc=False,
         remote_url=None,
         branch=None,
         no_pull=False,
-        hpc=False,
     ):
         self.module_name = module_name
         self.no_prompts = no_prompts
