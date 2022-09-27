@@ -56,10 +56,12 @@ class ModulesTest(ModuleCommand):
         remote_url=None,
         branch=None,
         no_pull=False,
+        hpc=False,
     ):
         self.module_name = module_name
         self.no_prompts = no_prompts
         self.pytest_args = pytest_args
+        self.hpc = hpc
 
         super().__init__(".", remote_url, branch, no_pull)
 
@@ -73,6 +75,8 @@ class ModulesTest(ModuleCommand):
         self._set_profile()
         self._check_profile()
         self._run_pytests()
+        if self.hpc:
+            self._run_pytests_hpc()
 
     def _check_inputs(self):
         """Do more complex checks about supplied flags."""
@@ -182,4 +186,12 @@ class ModulesTest(ModuleCommand):
 
         # Run pytest
         log.info(f"Running pytest for module '{self.module_name}'")
+        sys.exit(pytest.main(command_args))
+
+    def _run_pytests_hpc(self):
+        console = rich.console.Console()
+        console.rule(self.module_name, style="black")
+        command_args = ["--tag", f"hpc_{self.module_name}", "--symlink", "--keep-workflow-wd", "--git-aware"]
+        command_args += self.pytest_args
+        log.info(f"Running pytest on HPC for module '{self.module_name}'")
         sys.exit(pytest.main(command_args))
