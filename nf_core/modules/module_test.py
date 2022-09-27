@@ -71,12 +71,13 @@ class ModulesTest(ModuleCommand):
             log.info(
                 "[yellow]Press enter to use default values [cyan bold](shown in brackets) [yellow]or type your own responses"
             )
-        self._check_inputs()
         self._set_profile()
         self._check_profile()
-        self._run_pytests()
         if self.hpc:
             self._run_pytests_hpc()
+        else:
+            self._check_inputs()
+            self._run_pytests()
 
     def _check_inputs(self):
         """Do more complex checks about supplied flags."""
