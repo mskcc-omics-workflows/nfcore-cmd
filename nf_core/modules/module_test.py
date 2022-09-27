@@ -62,6 +62,8 @@ class ModulesTest(ModuleCommand):
         self.no_prompts = no_prompts
         self.pytest_args = pytest_args
         self.hpc = hpc
+        if self.hpc:
+            no_pull = True
 
         super().__init__(".", remote_url, branch, no_pull)
 
@@ -73,10 +75,11 @@ class ModulesTest(ModuleCommand):
             )
         self._set_profile()
         self._check_profile()
+        self._check_inputs()
         if self.hpc:
             self._run_pytests_hpc()
         else:
-            self._check_inputs()
+            #self._check_inputs()
             self._run_pytests()
 
     def _check_inputs(self):
