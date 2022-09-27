@@ -117,7 +117,7 @@ class ModulesTest(ModuleCommand):
         - tests/modules/TOOL/SUBTOOL/
 
         """
-        basedir = "modules/nf-core"
+        basedir = "modules/mskcc-omics-workflows"
 
         if self.repo_type == "modules":
             module_path = Path("modules") / self.module_name
@@ -189,10 +189,13 @@ class ModulesTest(ModuleCommand):
         log.info(f"Running pytest for module '{self.module_name}'")
         sys.exit(pytest.main(command_args))
 
+
     def _run_pytests_hpc(self):
         console = rich.console.Console()
         console.rule(self.module_name, style="black")
-        command_args = ["--tag", f"hpc_{self.module_name}", "--symlink", "--keep-workflow-wd", "--git-aware"]
-        command_args += self.pytest_args
+        test_path = Path("tests/modules") / self.module_name / "test.yml"
+        command_args = ["./tests/config/test_run.py", "--symlink", "--keep-workflow-wd", "--git-aware"]
+        command_args += ["--yml", test_path, "--module", self.module_name]
         log.info(f"Running pytest on HPC for module '{self.module_name}'")
         sys.exit(pytest.main(command_args))
+
