@@ -53,6 +53,7 @@ class ModulesTest(ModuleCommand):
         module_name=None,
         no_prompts=False,
         pytest_args="",
+        hpc=False,
         remote_url=None,
         branch=None,
         no_pull=False,
@@ -61,7 +62,10 @@ class ModulesTest(ModuleCommand):
         self.no_prompts = no_prompts
         self.pytest_args = pytest_args
 
-        super().__init__(".", remote_url, branch, no_pull)
+        self.hpc = hpc
+        if not self.hpc:
+            super().__init__(".", remote_url, branch, no_pull)
+
 
     def run(self):
         """Run test steps"""
@@ -72,7 +76,10 @@ class ModulesTest(ModuleCommand):
         self._check_inputs()
         self._set_profile()
         self._check_profile()
-        self._run_pytests()
+        if self.hpc:
+            self._run_pytests_hpc()
+        else:
+            self._run_pytests()
 
     def _check_inputs(self):
         """Do more complex checks about supplied flags."""
@@ -179,3 +186,13 @@ class ModulesTest(ModuleCommand):
         # Run pytest
         log.info(f"Running pytest for module '{self.module_name}'")
         sys.exit(pytest.main(command_args))
+
+    def _run_pytests_hpc(self):
+        console = rich.console.Console()
+        console.rule(self.module_name, style="black")
+        test_path = Path("tests/modules") / self.module_name / "test.yml"
+        command_args = ["./tests/config/test_run.py", "--symlink", "--keep-workflow-wd", "--git-aware"]
+        command_args += ["--yml", test_path, "--module", self.module_name]
+        log.info(f"Running pytest on HPC for module '{self.module_name}'")
+        sys.exit(pytest.main(command_args))
+

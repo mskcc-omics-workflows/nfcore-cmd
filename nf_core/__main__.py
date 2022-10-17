@@ -841,14 +841,15 @@ def mulled(specifications, build_number):
 @click.argument("tool", type=str, required=False, metavar="<tool> or <tool/subtool>")
 @click.option("-p", "--no-prompts", is_flag=True, default=False, help="Use defaults without prompting")
 @click.option("-a", "--pytest_args", type=str, required=False, multiple=True, help="Additional pytest arguments")
-def test_module(ctx, tool, no_prompts, pytest_args):
+@click.option("-x", "--hpc", is_flag=True, default=False, help="If there is a need to test on HPC")
+def test_module(ctx, tool, no_prompts, pytest_args, hpc):
     """
     Run module tests locally.
 
     Given the name of a module, runs the Nextflow test command.
     """
     try:
-        meta_builder = nf_core.modules.ModulesTest(tool, no_prompts, pytest_args)
+        meta_builder = nf_core.modules.ModulesTest(tool, no_prompts, pytest_args, hpc)
         meta_builder.run()
     except (UserWarning, LookupError) as e:
         log.critical(e)
