@@ -14,7 +14,7 @@
 # This is for unit testing on HPC
 # The name and the tags have to start with 'hpc_', otherwise, it will error out
 - name: "hpc_{{ tool }}{{ ' '+subtool if subtool else '' }}"
-  command: nextflow run ./tests/modules/{{ tool_dir }} -entry test_{{ tool_name_underscore }} -c ./tests/config/nextflow.config -c ./tests/modules/{{ tool_dir }}/nextflow.config -c ./hpc_test.config
+  command: nextflow run ./tests/modules/nf-core/{{ tool_dir }} -entry test_{{ tool_name_underscore }} -c ./tests/config/nextflow.config -c ./tests/modules/nf-core/{{ tool_dir }}/nextflow.config -c ./hpc_test.config
   tags:
     - "hpc_{{ tool }}"
     # {%- if subtool %}
@@ -22,4 +22,4 @@
     # {%- endif %}
   files:
     - path: "output/{{ tool }}/test.bam"
-    - path: output/{{ tool }}/versions.yml
+    - path: "output/{{ tool }}/versions.yml"
