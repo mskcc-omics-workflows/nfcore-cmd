@@ -96,7 +96,7 @@ class ModulesTestYmlBuilder(ModuleCommand):
 
         # Get the output YAML file / check it does not already exist
         while self.test_yml_output_path is None:
-            default_val = f"tests/modules/nf-core/{self.module_name}/test.yml"
+            default_val = f"tests/modules/msk-tools/{self.module_name}/test.yml"
             if self.no_prompts:
                 self.test_yml_output_path = default_val
             else:
@@ -171,7 +171,7 @@ class ModulesTestYmlBuilder(ModuleCommand):
         while ep_test["command"] == "":
             # Don't think we need the last `-c` flag, but keeping to avoid having to update 100s modules.
             # See https://github.com/nf-core/tools/issues/1562
-            default_val = f"nextflow run ./tests/modules/nf-core/{self.module_name} -entry {entry_point} -c ./tests/config/nextflow.config -c ./tests/modules/nf-core/{self.module_name}/nextflow.config"
+            default_val = f"nextflow run ./tests/modules/msk-tools/{self.module_name} -entry {entry_point} -c ./tests/config/nextflow.config -c ./tests/modules/msk-tools/{self.module_name}/nextflow.config"
             if self.no_prompts:
                 ep_test["command"] = default_val
             else:

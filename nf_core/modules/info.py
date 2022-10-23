@@ -97,7 +97,7 @@ class ModuleInfo(ModuleCommand):
                     modules = self.get_modules_clone_modules()
                 else:
                     modules = self.modules_json.get_all_modules().get(self.modules_repo.remote_url)
-                    modules = [module if dir == "nf-core" else f"{dir}/{module}" for dir, module in modules]
+                    modules = [module if dir == "msk-tools" else f"{dir}/{module}" for dir, module in modules]
                     if modules is None:
                         raise UserWarning(f"No modules installed from '{self.modules_repo.remote_url}'")
             else:
@@ -159,7 +159,7 @@ class ModuleInfo(ModuleCommand):
 
             log.debug(f"Module '{self.module}' meta.yml not found locally")
         else:
-            module_base_path = os.path.join(self.dir, "modules", "nf-core")
+            module_base_path = os.path.join(self.dir, "modules", "msk-tools")
             if self.module in os.listdir(module_base_path):
                 mod_dir = os.path.join(module_base_path, self.module)
                 meta_fn = os.path.join(mod_dir, "meta.yml")

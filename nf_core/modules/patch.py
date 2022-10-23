@@ -41,7 +41,7 @@ class ModulePatch(ModuleCommand):
         modules = self.modules_json.get_all_modules()[self.modules_repo.remote_url]
 
         if module is None:
-            choices = [module if dir == "nf-core" else f"{dir}/{module}" for dir, module in modules]
+            choices = [module if dir == "msk-tools" else f"{dir}/{module}" for dir, module in modules]
             module = questionary.autocomplete(
                 "Tool:",
                 choices,

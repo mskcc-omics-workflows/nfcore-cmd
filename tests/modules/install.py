@@ -36,7 +36,7 @@ def test_modules_install_nomodule(self):
 def test_modules_install_trimgalore(self):
     """Test installing a module - TrimGalore!"""
     assert self.mods_install.install("trimgalore") is not False
-    module_path = os.path.join(self.mods_install.dir, "modules", "nf-core", "trimgalore")
+    module_path = os.path.join(self.mods_install.dir, "modules", "msk-tools", "trimgalore")
     assert os.path.exists(module_path)
 
 

@@ -88,7 +88,7 @@ def get_installed_modules(dir, repo_type="modules"):
     local_modules = []
     nfcore_modules = []
     local_modules_dir = None
-    nfcore_modules_dir = os.path.join(dir, "modules", "nf-core")
+    nfcore_modules_dir = os.path.join(dir, "modules", "msk-tools")
 
     # Get local modules
     if repo_type == "pipeline":
@@ -117,7 +117,7 @@ def get_installed_modules(dir, repo_type="modules"):
     # Make full (relative) file paths and create NFCoreModule objects
     local_modules = [os.path.join(local_modules_dir, m) for m in local_modules]
     nfcore_modules = [
-        NFCoreModule(m, "nf-core/modules", Path(nfcore_modules_dir, m), repo_type=repo_type, base_dir=Path(dir))
+        NFCoreModule(m, "msk-tools/modules", Path(nfcore_modules_dir, m), repo_type=repo_type, base_dir=Path(dir))
         for m in nfcore_modules
     ]
 
@@ -127,7 +127,7 @@ def get_installed_modules(dir, repo_type="modules"):
 def get_repo_type(dir, repo_type=None, use_prompt=True):
     """
     Determine whether this is a pipeline repository or a clone of
-    nf-core/modules
+    msk-tools/modules
     """
     # Verify that the pipeline dir exists
     if dir is None or not os.path.exists(dir):

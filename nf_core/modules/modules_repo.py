@@ -17,7 +17,7 @@ from nf_core.utils import NFCORE_DIR
 log = logging.getLogger(__name__)
 
 # Constants for the nf-core/modules repo used throughout the module files
-NF_CORE_MODULES_NAME = "mskcc-omics-workflows"
+NF_CORE_MODULES_NAME = "msk-tools"
 NF_CORE_MODULES_REMOTE = "https://github.com/mskcc-omics-workflows/tools.git"
 NF_CORE_MODULES_DEFAULT_BRANCH = "master"
 

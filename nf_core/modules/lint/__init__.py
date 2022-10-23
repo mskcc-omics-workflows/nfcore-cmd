@@ -86,7 +86,7 @@ class ModuleLint(ModuleCommand):
             modules_json.check_up_to_date()
             all_pipeline_modules = modules_json.get_all_modules()
             if self.modules_repo.remote_url in all_pipeline_modules:
-                module_dir = Path(self.dir, "modules", "nf-core")
+                module_dir = Path(self.dir, "modules", "msk-tools")
                 self.all_remote_modules = [
                     NFCoreModule(m[1], self.modules_repo.remote_url, module_dir / m[1], self.repo_type, Path(self.dir))
                     for m in all_pipeline_modules[self.modules_repo.remote_url]

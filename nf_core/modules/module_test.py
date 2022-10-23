@@ -103,7 +103,7 @@ class ModulesTest(ModuleCommand):
             if not installed_modules:
                 raise UserWarning(
                     f"No installed modules were found from '{self.modules_repo.remote_url}'.\n"
-                    f"Are you running the tests inside the nf-core/modules main directory?\n"
+                    f"Are you running the tests inside the msk-tools/modules main directory?\n"
                     f"Otherwise, make sure that the directory structure is modules/TOOL/SUBTOOL/ and tests/modules/TOOLS/SUBTOOL/"
                 )
             self.module_name = questionary.autocomplete(
@@ -117,8 +117,8 @@ class ModulesTest(ModuleCommand):
 
     def _validate_folder_structure(self):
         """Validate that the modules follow the correct folder structure to run the tests:
-        - modules/nf-core/TOOL/SUBTOOL/
-        - tests/modules/nf-core/TOOL/SUBTOOL/
+        - modules/msk-tools/TOOL/SUBTOOL/
+        - tests/modules/msk-tools/TOOL/SUBTOOL/
 
         """
         module_path = Path(self.default_modules_path) / self.module_name
@@ -126,12 +126,12 @@ class ModulesTest(ModuleCommand):
 
         if not (self.dir / module_path).is_dir():
             raise UserWarning(
-                f"Cannot find directory '{module_path}'. Should be TOOL/SUBTOOL or TOOL. Are you running the tests inside the nf-core/modules main directory?"
+                f"Cannot find directory '{module_path}'. Should be TOOL/SUBTOOL or TOOL. Are you running the tests inside the msk-tools/modules main directory?"
             )
         if not (self.dir / test_path).is_dir():
             raise UserWarning(
                 f"Cannot find directory '{test_path}'. Should be TOOL/SUBTOOL or TOOL. "
-                "Are you running the tests inside the nf-core/modules main directory? "
+                "Are you running the tests inside the msk-tools/modules main directory? "
                 "Do you have tests for the specified module?"
             )
 

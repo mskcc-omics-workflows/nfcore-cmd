@@ -22,7 +22,7 @@ CORRECT_SHA = "335cd32405568ca3b6d4c05ab1e8a98c21e18a4d"
 SUCCEED_SHA = "f1566140c752e9c68fffc189fbe8cb9ee942b3ca"
 FAIL_SHA = "1fc8b0f953d915d66ee40d28bc337ff0998d05bd"
 BISMARK_ALIGN = "bismark/align"
-REPO_NAME = "nf-core"
+REPO_NAME = "msk-tools"
 PATCH_BRANCH = "patch-tester-restructure"
 REPO_URL = "https://gitlab.com/nf-core/modules-test.git"
 

@@ -256,13 +256,13 @@ class ModuleCreate(ModuleCommand):
                     pytest_modules_yml = yaml.safe_load(fh)
                 if self.subtool:
                     pytest_modules_yml[self.tool_name] = [
-                        f"modules/nf-core/{self.tool}/{self.subtool}/**",
-                        f"tests/modules/nf-core/{self.tool}/{self.subtool}/**",
+                        f"modules/msk-tools/{self.tool}/{self.subtool}/**",
+                        f"tests/modules/msk-tools/{self.tool}/{self.subtool}/**",
                     ]
                 else:
                     pytest_modules_yml[self.tool_name] = [
-                        f"modules/nf-core/{self.tool}/**",
-                        f"tests/modules/nf-core/{self.tool}/**",
+                        f"modules/msk-tools/{self.tool}/**",
+                        f"tests/modules/msk-tools/{self.tool}/**",
                     ]
                 pytest_modules_yml = dict(sorted(pytest_modules_yml.items()))
                 with open(os.path.join(self.directory, "tests", "config", "pytest_modules.yml"), "w") as fh:

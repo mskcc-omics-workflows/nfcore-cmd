@@ -24,8 +24,8 @@ def create_modules_repo_dummy(tmp_dir):
     """Create a dummy copy of the nf-core/modules repo"""
 
     root_dir = os.path.join(tmp_dir, "modules")
-    os.makedirs(os.path.join(root_dir, "modules", "nf-core"))
-    os.makedirs(os.path.join(root_dir, "tests", "modules", "nf-core"))
+    os.makedirs(os.path.join(root_dir, "modules", "msk-tools"))
+    os.makedirs(os.path.join(root_dir, "tests", "modules", "msk-tools"))
     os.makedirs(os.path.join(root_dir, "tests", "config"))
     with open(os.path.join(root_dir, "tests", "config", "pytest_modules.yml"), "w") as fh:
         fh.writelines(["test:", "\n  - modules/test/**", "\n  - tests/modules/test/**"])
@@ -95,7 +95,7 @@ class TestModules(unittest.TestCase):
     def test_modulesrepo_class(self):
         """Initialise a modules repo object"""
         modrepo = nf_core.modules.ModulesRepo()
-        assert modrepo.repo_path == "nf-core"
+        assert modrepo.repo_path == "msk-tools"
         assert modrepo.branch == "master"
 
     ############################################
