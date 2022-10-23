@@ -55,7 +55,7 @@ def module_tests(module_lint_object, module):
             all_tags_correct = True
             for test in test_yml:
                 for tag in test["tags"]:
-                    if not tag in [module.module_name, module.module_name.split("/")[0]]:
+                    if not tag in [module.module_name, module.module_name.split("/")[0], "hpc_" + module.module_name, "hpc_" + module.module_name.split("/")[0]]:
                         all_tags_correct = False
 
                 # Look for md5sums of empty files
