@@ -73,12 +73,12 @@ class ModulesTest(ModuleCommand):
             log.info(
                 "[yellow]Press enter to use default values [cyan bold](shown in brackets) [yellow]or type your own responses"
             )
-        self._check_inputs()
         self._set_profile()
         self._check_profile()
         if self.hpc:
             self._run_pytests_hpc()
         else:
+            self._check_inputs()
             self._run_pytests()
 
     def _check_inputs(self):
@@ -190,7 +190,7 @@ class ModulesTest(ModuleCommand):
     def _run_pytests_hpc(self):
         console = rich.console.Console()
         console.rule(self.module_name, style="black")
-        test_path = Path("tests/modules") / self.module_name / "test.yml"
+        test_path = Path("tests/modules/msk-tools") / self.module_name / "test.yml"
         command_args = ["./tests/config/test_run.py", "--symlink", "--keep-workflow-wd", "--git-aware"]
         command_args += ["--yml", test_path, "--module", self.module_name]
         log.info(f"Running pytest on HPC for module '{self.module_name}'")
