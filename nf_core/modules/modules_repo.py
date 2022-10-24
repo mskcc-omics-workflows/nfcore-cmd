@@ -127,7 +127,7 @@ class ModulesRepo(object):
 
         self.remote_url = remote_url
 
-        self.repo_path = nf_core.modules.module_utils.path_from_remote(self.remote_url)
+        self.repo_path = NF_CORE_MODULES_NAME
         self.fullname = nf_core.modules.module_utils.repo_full_name_from_remote(self.remote_url)
 
         self.setup_local_repo(remote_url, branch, hide_progress)
